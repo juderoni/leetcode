@@ -1,21 +1,23 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        lenStr = len(strs[0])
-        bing = strs[0]
+        # get smalles len string of list
+        lenting = len(strs[0])
         for i in strs:
-            leni = len(i)
-            if lenStr > leni:
-                lenStr = leni
+            if (lenting > len(i)):
+                lenting = len(i)
+            if i == "":
+                return ""
         
-        for i in range(0,1+ lenStr):
-            correct = True
-            for val in strs:
-                if bing[0:(lenStr - i)] in val[0:(lenStr - i)]:
-                    
-                    continue
-                else:
-                    correct = False
-                    continue
-            if (correct):
-                return bing[0:lenStr - i]
-        return ""
+        # now iteratively check the latters that match
+        comparStr = ""
+        for i in range(lenting):
+            comparStr += strs[0][i]
+            for tingy in strs:
+               
+                if comparStr != tingy[:i + 1]:
+                    return comparStr[:i]
+        return comparStr
+
+
+ 
+
