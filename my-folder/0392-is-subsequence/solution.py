@@ -1,13 +1,15 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        subi = 0
+        # want to know if the intersection of the two strings is real
+        j = 0
         if len(s) == 0:
             return True
-        for i in range(len(t)):
-            
-            if s[subi] == t[i]:
-                subi += 1
-            if subi == len(s):
+        
+        for i in t:
+            if i == s[j]:
+                j += 1
+            if j == len(s):
                 return True
+
         return False
-            
+
